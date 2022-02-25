@@ -30,42 +30,42 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
     with TickerProviderStateMixin {
 
   late final AnimationController _controller = AnimationController(
-    duration: const Duration(seconds: 3),
+    duration: const Duration(seconds: 3), //3
     vsync: this,
   )..repeat();
 
   late final AnimationController _controller2 = AnimationController(
-    duration: const Duration(seconds: 7),
+    duration: const Duration(seconds: 7), //7
     vsync: this,
   )..repeat();
 
   late final AnimationController _controller3 = AnimationController(
-    duration: const Duration(seconds: 12),
+    duration: const Duration(seconds: 12), //12
     vsync: this,
   )..repeat();
 
   late final AnimationController _controller4 = AnimationController(
-    duration: const Duration(seconds: 23),
+    duration: const Duration(seconds: 23), //23
     vsync: this,
   )..repeat();
 
   late final AnimationController _controller5 = AnimationController(
-    duration: const Duration(seconds: 142),
+    duration: const Duration(seconds: 142), //142
     vsync: this,
   )..repeat();
 
   late final AnimationController _controller6 = AnimationController(
-    duration: const Duration(seconds: 354),
+    duration: const Duration(seconds: 354), //354
     vsync: this,
   )..repeat();
 
   late final AnimationController _controller7 = AnimationController(
-    duration: const Duration(seconds: 1008),
+    duration: const Duration(seconds: 1008), //1008
     vsync: this,
   )..repeat();
 
   late final AnimationController _controller8 = AnimationController(
-    duration: const Duration(seconds: 1977),
+    duration: const Duration(seconds: 1977), //1977
     vsync: this,
   )..repeat();
 
@@ -89,10 +89,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
     return Scaffold(
       backgroundColor: Colors.black,
 
-      body: Padding(
-        padding: const EdgeInsets.all(100.0),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Center(
           child: Stack(
+
             alignment: Alignment.center,
 
             //bottom
@@ -107,14 +108,17 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
                     child: child,
                   );
                 },
-                child: Container(color: Colors.black,
-                  width: 530,
-                  height: 530,
+                child: Container(color: Colors.transparent,
+                  width: 470,
+                  height: 470,
                   alignment: Alignment.topLeft,
-                  child: Image.asset(
-                    'assets/images/neptune.png',
-                    height: 40,
-                    width: 40,
+                  child: Hero(
+                    tag: 'neptune',
+                    child: Image.asset(
+                      'assets/images/neptune.png',
+                      height: 40,
+                      width: 40,
+                    ),
                   ),
                 ),
               ),
@@ -128,14 +132,17 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
                     child: child,
                   );
                 },
-                child: Container(color: Colors.black,
+                child: Container(color: Colors.transparent,
                   width: 419,
                   height: 419,
                   alignment: Alignment.topLeft,
-                  child: Image.asset(
-                    'assets/images/uranus.png',
-                    height: 40,
-                    width: 40,
+                  child: Hero(
+                    tag: 'uranus',
+                    child: Image.asset(
+                      'assets/images/uranus.png',
+                      height: 40,
+                      width: 40,
+                    ),
                   ),
                 ),
               ),
@@ -153,10 +160,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
                   width: 415,
                   height: 415,
                   alignment: Alignment.topLeft,
-                  child: Image.asset(
-                    'assets/images/saturn.png',
-                    height: 100,
-                    width: 100,
+                  child: Hero(
+                    tag: 'saturn',
+                    child: Image.asset(
+                      'assets/images/saturn.png',
+                      height: 100,
+                      width: 100,
+                    ),
                   ),
                 ),
               ),
@@ -171,15 +181,17 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
                   );
                 },
 
-
                 child: Container(color: Colors.transparent,
                   width: 300,
                   height: 300,
                   alignment: Alignment.topLeft,
-                  child: Image.asset(
-                    'assets/images/jupiter.png',
-                    height: 60,
-                    width: 60,
+                  child: Hero(
+                    tag: 'jupiter',
+                    child: Image.asset(
+                      'assets/images/jupiter.png',
+                      height: 60,
+                      width: 60,
+                    ),
                   ),
                 ),
               ),
@@ -198,10 +210,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
                   width: 205,
                   height: 205,
                   alignment: Alignment.topLeft,
-                  child: Image.asset(
-                    'assets/images/mars.png',
-                    height: 20,
-                    width: 20,
+                  child: Hero(
+                    tag: 'mars',
+                    child: Image.asset(
+                      'assets/images/mars.png',
+                      height: 20,
+                      width: 20,
+                    ),
                   ),
                 ),
               ),
@@ -220,10 +235,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
                   color: Colors.transparent,
                   width: 180,
                   height: 180,
-                  child: Image.asset(
-                    'assets/images/earth.png',
-                    height: 30,
-                    width: 30,
+                  child: Hero(
+                    tag: 'earth',
+                    child: Image.asset(
+                      'assets/images/earth.png',
+                      height: 30,
+                      width: 30,
+                    ),
                   ),
                 ),
               ),
@@ -242,10 +260,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
                   color: Colors.transparent,
                   width: 140,
                   height: 140,
-                  child: Image.asset(
-                    'assets/images/venus.png',
-                    height: 30,
-                    width: 30,
+                  child: Hero(
+                    tag: 'venus',
+                    child: Image.asset(
+                      'assets/images/venus.png',
+                      height: 30,
+                      width: 30,
+                    ),
                   ),
                 ),
               ),
@@ -264,10 +285,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
                   color: Colors.transparent,
                   width: 95,
                   height: 95,
-                  child: Image.asset(
-                    'assets/images/mercury.png',
-                    height: 20,
-                    width: 20,
+                  child: Hero(
+                    tag: 'mercury',
+                    child: Image.asset(
+                      'assets/images/mercury.png',
+                      height: 20,
+                      width: 20,
+                    ),
                   ),
                 ),
 
@@ -279,7 +303,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
                 width: 100,
                 height: 100,
                 child: Hero(
-                  tag: 'dash',
+                  tag: 'sun',
                   child: Image.asset(
                     'assets/images/sun.png',
                     fit: BoxFit.fill,
