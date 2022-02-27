@@ -8,6 +8,7 @@ import 'package:very_good_slide_puzzle/layout/layout.dart';
 import 'package:very_good_slide_puzzle/models/models.dart';
 import 'package:very_good_slide_puzzle/puzzle/puzzle.dart';
 import 'package:very_good_slide_puzzle/simple/simple.dart';
+import 'package:very_good_slide_puzzle/solvedView.dart';
 import 'package:very_good_slide_puzzle/testRotation2.dart';
 import 'package:very_good_slide_puzzle/theme/theme.dart';
 import 'package:very_good_slide_puzzle/timer/timer.dart';
@@ -296,11 +297,13 @@ class PuzzleBoard extends StatelessWidget {
             context.read<TimerBloc>().add(const TimerStopped());
             print("New page should show");
 
-            //Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: MyApp()));
+            Navigator.push(context, PageTransition<void>(
+                type: PageTransitionType.fade, duration: Duration(seconds: 4),child: solvedView())
+            );
 
 
-             Navigator.pushReplacement(
-                 context,MaterialPageRoute<void>(builder: (context) => MyApp()),);
+             // Navigator.pushReplacement(
+             //     context,MaterialPageRoute<void>(builder: (context) => MyApp()),);
 
           }
         },

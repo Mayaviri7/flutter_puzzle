@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -30,42 +31,42 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
     with TickerProviderStateMixin {
 
   late final AnimationController _controller = AnimationController(
-    duration: const Duration(seconds: 3), //3
+    duration: const Duration(seconds: 2), //3
     vsync: this,
   )..repeat();
 
   late final AnimationController _controller2 = AnimationController(
-    duration: const Duration(seconds: 7), //7
+    duration: const Duration(seconds: 4), //7
     vsync: this,
   )..repeat();
 
   late final AnimationController _controller3 = AnimationController(
-    duration: const Duration(seconds: 12), //12
+    duration: const Duration(seconds: 6), //12
     vsync: this,
   )..repeat();
 
   late final AnimationController _controller4 = AnimationController(
-    duration: const Duration(seconds: 23), //23
+    duration: const Duration(seconds: 8), //23
     vsync: this,
   )..repeat();
 
   late final AnimationController _controller5 = AnimationController(
-    duration: const Duration(seconds: 142), //142
+    duration: const Duration(seconds: 10), //142
     vsync: this,
   )..repeat();
 
   late final AnimationController _controller6 = AnimationController(
-    duration: const Duration(seconds: 354), //354
+    duration: const Duration(seconds: 12), //354
     vsync: this,
   )..repeat();
 
   late final AnimationController _controller7 = AnimationController(
-    duration: const Duration(seconds: 1008), //1008
+    duration: const Duration(seconds: 14), //1008
     vsync: this,
   )..repeat();
 
   late final AnimationController _controller8 = AnimationController(
-    duration: const Duration(seconds: 1977), //1977
+    duration: const Duration(seconds: 20), //1977
     vsync: this,
   )..repeat();
 
@@ -87,6 +88,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   //title: Text('Solar System (1 second = 1 month)', style: TextStyle(fontWeight: FontWeight.bold),),
+      //   backgroundColor: Colors.transparent,
+      //
+      // ),
+
       backgroundColor: Colors.black,
 
       body: SingleChildScrollView(

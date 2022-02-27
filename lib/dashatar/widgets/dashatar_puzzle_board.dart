@@ -45,7 +45,10 @@ class _DashatarPuzzleBoardState extends State<DashatarPuzzleBoard> {
   Widget build(BuildContext context) {
     return BlocListener<PuzzleBloc, PuzzleState>(
       listener: (context, state) async {
-        if (state.puzzleStatus == PuzzleStatus.complete) {
+        if (
+        5 == 3
+        //state.puzzleStatus == PuzzleStatus.incomplete
+        ) {
           _completePuzzleTimer =
               Timer(const Duration(milliseconds: 370), () async {
             await showAppDialog<void>(
@@ -65,7 +68,9 @@ class _DashatarPuzzleBoardState extends State<DashatarPuzzleBoard> {
                     value: context.read<AudioControlBloc>(),
                   ),
                 ],
-                child: const DashatarShareDialog(),
+                child: Container(),
+                //child: const DashatarShareDialog(),
+
               ),
             );
           });
