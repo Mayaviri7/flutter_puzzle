@@ -13,7 +13,6 @@ import 'package:very_good_slide_puzzle/testRotation2.dart';
 import 'package:very_good_slide_puzzle/theme/theme.dart';
 import 'package:very_good_slide_puzzle/timer/timer.dart';
 import 'package:very_good_slide_puzzle/typography/typography.dart';
-import 'package:very_good_slide_puzzle/puzzlePage2.dart';
 
 import 'package:page_transition/page_transition.dart';
 import 'package:very_good_slide_puzzle/solvedWidget.dart';
@@ -24,9 +23,9 @@ import 'package:very_good_slide_puzzle/solvedWidget.dart';
 /// Builds the puzzle based on the current [PuzzleTheme]
 /// from [ThemeBloc].
 /// {@endtemplate}
-class PuzzlePage extends StatelessWidget {
+class PuzzlePage2 extends StatelessWidget {
   /// {@macro puzzle_page}
-  const PuzzlePage({Key? key}) : super(key: key);
+  const PuzzlePage2({Key? key}) : super(key: key);
 
 
 
@@ -52,7 +51,7 @@ class PuzzlePage extends StatelessWidget {
         BlocProvider(
           create: (context) => ThemeBloc(
             initialThemes: [
-              const SimpleTheme(),
+              const BlueDashatarTheme(),
               context.read<DashatarThemeBloc>().state.theme,
             ],
           ),
@@ -79,7 +78,7 @@ class _PuzzleRotate extends StatefulWidget {
   _PuzzleRotateState createState() => _PuzzleRotateState();
 }
 /// {@template puzzle_view}
-/// Displays the content for the [PuzzlePage].
+/// Displays the content for the [PuzzlePage2].
 /// {@endtemplate}
 class PuzzleView extends StatelessWidget {
   /// {@macro puzzle_view}
@@ -213,11 +212,11 @@ class _Puzzle extends StatelessWidget {
                     ),
 
                     Column(
-                    children: const [
-                      PuzzleHeader(),
-                      PuzzleSections(),
-                    ],
-                  ),
+                      children: const [
+                        PuzzleHeader(),
+                        PuzzleSections(),
+                      ],
+                    ),
                   ],
 
                 ),
@@ -326,9 +325,9 @@ class PuzzleSections extends StatelessWidget {
         children: [
           theme.layoutDelegate.startSectionBuilder(state),
           const PuzzleMenu(),
-          const PuzzleBoard(),
+          //const PuzzleBoard(),
           //TODO create own class
-             //Transform.scale(child: const solvedWidget(), scale: 0.80,),
+          Transform.scale(child: const solvedWidget(), scale: 0.80,),
           theme.layoutDelegate.endSectionBuilder(state),
         ],
       ),
@@ -379,24 +378,15 @@ class PuzzleBoard extends StatelessWidget {
             //TODO Make sure this push works!
 
             context.read<TimerBloc>().add(const TimerStopped());
-            //Change theme to "simple" === to clicking simple button in header
-
-
-            // Update the currently selected theme.
-            context.read<ThemeBloc>().add(ThemeChanged(themeIndex: 0));
-
             print("New page should show");
-            // Navigator.push(context, PageTransition<void>(
-            //     type: PageTransitionType.fade, duration: Duration(seconds: 4),child: PuzzlePage2())
-            // );
 
-            // Navigator.push(context, PageTransition<void>(
-            //     type: PageTransitionType.fade, duration: Duration(seconds: 4),child: solvedView())
-            // );
+            Navigator.push(context, PageTransition<void>(
+                type: PageTransitionType.fade, duration: Duration(seconds: 4),child: solvedView())
+            );
 
 
-             // Navigator.pushReplacement(
-             //     context,MaterialPageRoute<void>(builder: (context) => MyApp()),);
+            // Navigator.pushReplacement(
+            //     context,MaterialPageRoute<void>(builder: (context) => MyApp()),);
 
           }
         },
@@ -405,10 +395,10 @@ class PuzzleBoard extends StatelessWidget {
           puzzle.tiles
               .map(
                 (tile) => _PuzzleTile(
-                  key: Key('puzzle_tile_${tile.value.toString()}'),
-                  tile: tile,
-                ),
-              )
+              key: Key('puzzle_tile_${tile.value.toString()}'),
+              tile: tile,
+            ),
+          )
               .toList(),
         ),
       ),
@@ -453,7 +443,7 @@ class PuzzleMenu extends StatelessWidget {
       children: [
         ...List.generate(
           themes.length,
-          (index) => PuzzleMenuItem(
+              (index) => PuzzleMenuItem(
             theme: themes[index],
             themeIndex: index,
           ),
@@ -509,13 +499,13 @@ class PuzzleMenuItem extends StatelessWidget {
             height: 40,
             decoration: isCurrentTheme
                 ? BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        width: 2,
-                        color: currentTheme.menuUnderlineColor,
-                      ),
-                    ),
-                  )
+              border: Border(
+                bottom: BorderSide(
+                  width: 2,
+                  color: currentTheme.menuUnderlineColor,
+                ),
+              ),
+            )
                 : null,
             child: child,
           ),
@@ -525,15 +515,15 @@ class PuzzleMenuItem extends StatelessWidget {
       large: (_, child) => child!,
       child: (currentSize) {
         final leftPadding =
-            themeIndex > 0 && currentSize != ResponsiveLayoutSize.small
-                ? 40.0
-                : 0.0;
+        themeIndex > 0 && currentSize != ResponsiveLayoutSize.small
+            ? 40.0
+            : 0.0;
 
         return Padding(
           padding: EdgeInsets.only(left: leftPadding),
           child: Tooltip(
             message:
-                theme != currentTheme ? context.l10n.puzzleChangeTooltip : '',
+            theme != currentTheme ? context.l10n.puzzleChangeTooltip : '',
             child: TextButton(
               style: TextButton.styleFrom(
                 padding: EdgeInsets.zero,
@@ -556,15 +546,15 @@ class PuzzleMenuItem extends StatelessWidget {
 
                 // Stop the Dashatar countdown if it has been started.
                 context.read<DashatarPuzzleBloc>().add(
-                      const DashatarCountdownStopped(),
-                    );
+                  const DashatarCountdownStopped(),
+                );
 
                 // Initialize the puzzle board for the newly selected theme.
                 context.read<PuzzleBloc>().add(
-                      PuzzleInitialized(
-                        shufflePuzzle: theme is SimpleTheme,
-                      ),
-                    );
+                  PuzzleInitialized(
+                    shufflePuzzle: theme is SimpleTheme,
+                  ),
+                );
               },
               child: AnimatedDefaultTextStyle(
                 duration: PuzzleThemeAnimationDuration.textStyle,
@@ -573,7 +563,7 @@ class PuzzleMenuItem extends StatelessWidget {
                       ? currentTheme.menuActiveColor
                       : currentTheme.menuInactiveColor,
                 ),
-                child: Text(theme.name), //theme.name
+                child: Text(theme.name),
               ),
             ),
           ),
@@ -603,7 +593,7 @@ final puzzleTitleKey = GlobalKey(debugLabel: 'puzzle_title');
 /// Used to animate the transition of [NumberOfMovesAndTilesLeft]
 /// when changing a theme.
 final numberOfMovesAndTilesLeftKey =
-    GlobalKey(debugLabel: 'number_of_moves_and_tiles_left');
+GlobalKey(debugLabel: 'number_of_moves_and_tiles_left');
 
 /// The global key of [AudioControl].
 ///

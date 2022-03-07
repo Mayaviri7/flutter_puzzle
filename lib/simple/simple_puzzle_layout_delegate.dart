@@ -7,6 +7,7 @@ import 'package:very_good_slide_puzzle/layout/layout.dart';
 import 'package:very_good_slide_puzzle/models/models.dart';
 import 'package:very_good_slide_puzzle/puzzle/puzzle.dart';
 import 'package:very_good_slide_puzzle/simple/simple.dart';
+import 'package:very_good_slide_puzzle/solvedWidget.dart';
 import 'package:very_good_slide_puzzle/theme/theme.dart';
 import 'package:very_good_slide_puzzle/typography/typography.dart';
 
@@ -91,43 +92,49 @@ class SimplePuzzleLayoutDelegate extends PuzzleLayoutDelegate {
 
   @override
   Widget boardBuilder(int size, List<Widget> tiles) {
-    return Column(
+    return Stack(
       children: [
-        const ResponsiveGap(
-          small: 32,
-          medium: 48,
-          large: 96,
-        ),
-        ResponsiveLayoutBuilder(
-          small: (_, __) => SizedBox.square(
-            dimension: _BoardSize.small,
-            child: SimplePuzzleBoard(
-              key: const Key('simple_puzzle_board_small'),
-              size: size,
-              tiles: tiles,
-              spacing: 5,
-            ),
-          ),
-          medium: (_, __) => SizedBox.square(
-            dimension: _BoardSize.medium,
-            child: SimplePuzzleBoard(
-              key: const Key('simple_puzzle_board_medium'),
-              size: size,
-              tiles: tiles,
-            ),
-          ),
-          large: (_, __) => SizedBox.square(
-            dimension: _BoardSize.large,
-            child: SimplePuzzleBoard(
-              key: const Key('simple_puzzle_board_large'),
-              size: size,
-              tiles: tiles,
-            ),
-          ),
-        ),
-        const ResponsiveGap(
-          large: 96,
-        ),
+        // Column(
+        //   children: [
+        //     const ResponsiveGap(
+        //       small: 32,
+        //       medium: 48,
+        //       large: 96,
+        //     ),
+        //     ResponsiveLayoutBuilder(
+        //       small: (_, __) => SizedBox.square(
+        //         dimension: _BoardSize.small,
+        //         child: SimplePuzzleBoard(
+        //           key: const Key('simple_puzzle_board_small'),
+        //           size: size,
+        //           tiles: tiles,
+        //           spacing: 5,
+        //         ),
+        //       ),
+        //       medium: (_, __) => SizedBox.square(
+        //         dimension: _BoardSize.medium,
+        //         child: SimplePuzzleBoard(
+        //           key: const Key('simple_puzzle_board_medium'),
+        //           size: size,
+        //           tiles: tiles,
+        //         ),
+        //       ),
+        //       large: (_, __) => SizedBox.square(
+        //         dimension: _BoardSize.large,
+        //         child: SimplePuzzleBoard(
+        //           key: const Key('simple_puzzle_board_large'),
+        //           size: size,
+        //           tiles: tiles,
+        //         ),
+        //       ),
+        //     ),
+        //     const ResponsiveGap(
+        //       large: 96,
+        //     ),
+        //   ],
+        // ),
+        Transform.scale(scale: 0.80,
+        child: solvedWidget()),
       ],
     );
   }

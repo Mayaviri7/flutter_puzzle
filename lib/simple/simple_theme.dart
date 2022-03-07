@@ -22,13 +22,13 @@ class SimpleTheme extends PuzzleTheme {
   Color get nameColor => PuzzleColors.grey1;
 
   @override
-  Color get titleColor => PuzzleColors.primary1;
+  Color get titleColor => PuzzleColors.white;
 
   @override
   Color get backgroundColor => PuzzleColors.white;
 
   @override
-  Color get defaultColor => PuzzleColors.primary5;
+  Color get defaultColor => PuzzleColors.grey1;
 
   @override
   Color get buttonColor => PuzzleColors.primary6;

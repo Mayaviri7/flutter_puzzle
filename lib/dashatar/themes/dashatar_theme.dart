@@ -39,10 +39,10 @@ abstract class DashatarTheme extends PuzzleTheme {
   bool get isLogoColored => false;
 
   @override
-  Color get menuActiveColor => PuzzleColors.white;
+  Color get menuActiveColor => Colors.transparent;
 
   @override
-  Color get menuUnderlineColor => PuzzleColors.white;
+  Color get menuUnderlineColor => Colors.transparent;
 
   @override
   PuzzleLayoutDelegate get layoutDelegate =>

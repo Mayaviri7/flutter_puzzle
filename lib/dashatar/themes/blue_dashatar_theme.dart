@@ -24,7 +24,7 @@ class BlueDashatarTheme extends DashatarTheme {
   Color get buttonColor => PuzzleColors.blue50;
 
   @override
-  Color get menuInactiveColor => PuzzleColors.blue50;
+  Color get menuInactiveColor => Colors.transparent;
 
   @override
   Color get countdownColor => PuzzleColors.blue50;

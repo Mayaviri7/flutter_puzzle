@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 /// Defines the color palette for the puzzle UI.
@@ -53,8 +54,8 @@ abstract class PuzzleColors {
   /// Grey 5
   static const Color grey5 = Color(0xFFF8F9FA);
 
-  /// White // Background Color
-  static const Color white = Color(0xFFFFF475);
+  /// White // Background color // Title color
+  static const Color white  = Colors.white;
 
   /// White 2 (opacity 40%)
   static const Color white2 = Color(0x66FFFFFF);
@@ -68,20 +69,20 @@ abstract class PuzzleColors {
   /// Green 50
   static const Color green50 = Color(0xFF00857F);
 
-  /// Blue primary
-  static const Color bluePrimary = Color(0xFF003064);
+  /// Blue primary // 1st square BACKGROUND
+  static const Color bluePrimary = Color(0xFF000000);
 
-  /// Blue 90
-  static const Color blue90 = Color(0xFF75BFFF);
+  /// Blue 90 //Blue used for subtitle
+  static const Color blue90 = Colors.grey;
 
   /// Blue 50
-  static const Color blue50 = Color(0xFF027DFD);
+  static const Color blue50 = Colors.grey;
 
-  /// Yellow primary
-  static const Color yellowPrimary = Color(0xFF676000);
+  /// Yellow primary// Background of yellow
+  static const Color yellowPrimary = Color(0xFF000000);
 
-  /// Yellow 90
-  static const Color yellow90 = Color(0xFFFFF475);
+  /// Yellow 90 //Title
+  static const Color yellow90 = Colors.white;
 
   /// Yellow 50
   static const Color yellow50 = Color(0xFF9E9400);
