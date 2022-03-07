@@ -5,7 +5,8 @@ part of 'theme_bloc.dart';
 class ThemeState extends Equatable {
   const ThemeState({
     required this.themes,
-    this.theme = const SimpleTheme(),
+    this.theme = const BlueDashatarTheme(),
+    //this.theme = const SimpleTheme(),
   });
 
   /// The list of all available themes.

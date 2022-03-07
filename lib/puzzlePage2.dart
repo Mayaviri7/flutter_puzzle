@@ -17,12 +17,15 @@ import 'package:very_good_slide_puzzle/typography/typography.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:very_good_slide_puzzle/solvedWidget.dart';
 
+import 'dart:math' as math;
+
 /// {@template puzzle_page}
 /// The root page of the puzzle UI.
 ///
 /// Builds the puzzle based on the current [PuzzleTheme]
 /// from [ThemeBloc].
 /// {@endtemplate}
+///
 class PuzzlePage2 extends StatelessWidget {
   /// {@macro puzzle_page}
   const PuzzlePage2({Key? key}) : super(key: key);
@@ -71,12 +74,7 @@ class PuzzlePage2 extends StatelessWidget {
 }
 
 
-class _PuzzleRotate extends StatefulWidget {
-  const _PuzzleRotate({Key? key}) : super(key: key);
 
-  @override
-  _PuzzleRotateState createState() => _PuzzleRotateState();
-}
 /// {@template puzzle_view}
 /// Displays the content for the [PuzzlePage2].
 /// {@endtemplate}
@@ -126,58 +124,6 @@ class PuzzleView extends StatelessWidget {
       ),
     );
   }
-}
-class _PuzzleRotateState extends State<_PuzzleRotate> {
-  //const _PuzzleRotateState({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
-    final state = context.select((PuzzleBloc bloc) => bloc.state);
-
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Stack(
-          children: [
-
-            if (theme is SimpleTheme)
-              theme.layoutDelegate.backgroundBuilder(state),
-            SingleChildScrollView(
-
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: constraints.maxHeight,
-                ),
-
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: Image.asset(
-                        'assets/images/stars.jpg',
-                        repeat: ImageRepeat.repeat,
-                      ),
-                    ),
-
-                    Column(
-                      children: const [
-                        PuzzleHeader(),
-                        PuzzleSections(),
-                      ],
-                    ),
-                  ],
-
-                ),
-              ),
-            ),
-            if (theme is! SimpleTheme)
-              theme.layoutDelegate.backgroundBuilder(state),
-          ],
-        );
-      },
-    );
-  }
-
-
 }
 
 class _Puzzle extends StatelessWidget {
@@ -354,6 +300,67 @@ class PuzzleSections extends StatelessWidget {
   }
 }
 
+class PuzzleSectionsRotating extends StatefulWidget {
+  const PuzzleSectionsRotating({Key? key}) : super(key: key);
+
+  @override
+  _PuzzleSectionsRotatingState createState() => _PuzzleSectionsRotatingState();
+}
+
+class _PuzzleSectionsRotatingState extends State<PuzzleSectionsRotating>
+    with TickerProviderStateMixin {
+
+  late final AnimationController _controller = AnimationController(
+    duration: const Duration(seconds: 4), //3
+    vsync: this,
+  )..repeat();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+
+    super.dispose();
+  }
+  @override
+  Widget build(BuildContext context) {
+    final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
+    final state = context.select((PuzzleBloc bloc) => bloc.state);
+
+    return ResponsiveLayoutBuilder(
+      small: (context, child) => Column(
+        children: [
+          theme.layoutDelegate.startSectionBuilder(state),
+          const PuzzleMenu(),
+          const PuzzleBoard(),
+          //TODO create own class
+          //Transform.scale(child: const solvedWidget(), scale: 0.80,),
+          theme.layoutDelegate.endSectionBuilder(state),
+        ],
+      ),
+      medium: (context, child) => Column(
+        children: [
+          theme.layoutDelegate.startSectionBuilder(state),
+          const PuzzleBoard(),
+          theme.layoutDelegate.endSectionBuilder(state),
+        ],
+      ),
+      large: (context, child) => Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: theme.layoutDelegate.startSectionBuilder(state),
+          ),
+          const PuzzleBoard(),
+          Expanded(
+            child: theme.layoutDelegate.endSectionBuilder(state),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
 /// {@template puzzle_board}
 /// Displays the board of the puzzle.
 /// {@endtemplate}
@@ -405,6 +412,8 @@ class PuzzleBoard extends StatelessWidget {
     );
   }
 }
+
+
 
 class _PuzzleTile extends StatelessWidget {
   const _PuzzleTile({
