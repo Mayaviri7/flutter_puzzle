@@ -29,9 +29,10 @@ class MyStatefulWidget extends StatefulWidget {
 /// AnimationControllers can be created with `vsync: this` because of TickerProviderStateMixin.
 class _MyStatefulWidgetState extends State<MyStatefulWidget>
     with TickerProviderStateMixin {
+  int _currentSliderValue = -3;
 
   late final AnimationController _controller = AnimationController(
-    duration: const Duration(seconds: 3), //3
+    duration: Duration(seconds: _currentSliderValue * -33), //3
     vsync: this,
   )..repeat();
 
@@ -84,6 +85,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
 
     super.dispose();
   }
+
+  // String getLabel(int val, int test) {
+  //   var value = val.toString() as String;
+  //   Switch(value) {
+  //   }
+  //   return 'c';
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -332,6 +340,37 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
                     ),
                   ),
                 ),
+
+            Slider(
+              value: _currentSliderValue.toDouble(),
+
+              inactiveColor: Colors.white,
+              thumbColor: Colors.amber ,
+              activeColor: Colors.red[400],
+              //So that max = fastest
+              max: -3, //33
+              min: -33,  //3
+              divisions: 3,
+              //Easy, medium, difficult, expert
+              //label: _currentSliderValue.round().toString(),
+
+              //label: _currentSliderValue.,
+              onChanged: (double value) {
+                setState(() {
+                  _currentSliderValue = value.toInt();
+                  if(_currentSliderValue == -33) {
+                    _controller.stop();
+                  } else {
+                    _controller.duration = Duration(seconds: _currentSliderValue * -1);
+                    if (_controller.isAnimating) _controller.forward();
+                    _controller.repeat();
+                  }
+
+
+                });
+              },
+            ),
+
 
               ],
             ),
