@@ -33,3 +33,18 @@ $ flutter run -d chrome
 [very_good_cli_link]: https://github.com/VeryGoodOpenSource/very_good_cli
 [very_good_ventures_link]: https://verygood.ventures/
 [logo]: art/header.png
+
+# Flutter Space Puzzle 
+This is a slide puzzle built for the Flutter Challenge. How the challenge worked is participants were given a sample code (containing the logic and ui for a basic slide puzzle) and told to develop a unique puzzle. Personally, I decided to go with a space theme and decided to build upon the given sample code. Going with the theme, I made a puzzle that rotated as you solved it (you can adjust the speed of the puzzle rotation). When you complete the space puzzle, the puzzle transitions to an animation of planets rotating. 
+
+
+<p float="left">
+<img width="170" alt="Screen Shot 2022-10-23 at 8 51 48 PM" src="https://user-images.githubusercontent.com/115958445/197446682-2194ed01-2441-4d58-9c2a-7a1c8bba7de9.png">
+<img width="170" alt="Screen Shot 2022-10-23 at 8 51 57 PM" src="https://user-images.githubusercontent.com/115958445/197446686-994ba946-4342-4c70-bb3d-2556f9cb2217.png">
+<img width="170" alt="Screen Shot 2022-10-23 at 8 52 21 PM" src="https://user-images.githubusercontent.com/115958445/197446689-31a4091d-043d-47a1-b0b2-5eb5d55c9b79.png">
+<img width="180" alt="Screen Shot 2022-10-23 at 8 52 53 PM" src="https://user-images.githubusercontent.com/115958445/197446692-c34333ac-aa42-4681-af7e-0151bbdecd2c.png">
+<img width="180" alt="Screen Shot 2022-10-23 at 8 53 50 PM" src="https://user-images.githubusercontent.com/115958445/197446696-4fd6a123-28c5-4ef2-aa51-6f64c0bf05cf.png">
+</p>
+
+## See the puzzle in action here: https://www.youtube.com/watch?v=GgbMfM6V8d0
+
