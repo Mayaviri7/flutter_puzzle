@@ -43,7 +43,9 @@ This is a slide puzzle built for the Flutter Challenge. How the challenge worked
 <img width="170" alt="Screen Shot 2022-10-23 at 8 51 57 PM" src="https://user-images.githubusercontent.com/115958445/197446686-994ba946-4342-4c70-bb3d-2556f9cb2217.png">
 <img width="170" alt="Screen Shot 2022-10-23 at 8 52 21 PM" src="https://user-images.githubusercontent.com/115958445/197446689-31a4091d-043d-47a1-b0b2-5eb5d55c9b79.png">
 <img width="180" alt="Screen Shot 2022-10-23 at 8 52 53 PM" src="https://user-images.githubusercontent.com/115958445/197446692-c34333ac-aa42-4681-af7e-0151bbdecd2c.png">
-<img width="180" alt="Screen Shot 2022-10-23 at 8 53 50 PM" src="https://user-images.githubusercontent.com/115958445/197446696-4fd6a123-28c5-4ef2-aa51-6f64c0bf05cf.png">
+<img width="331" alt="Screen Shot 2022-10-26 at 12 00 51 AM" src="https://user-images.githubusercontent.com/115958445/197956806-b944b607-5380-41d7-9b65-ce03f77de497.png">
+
+
 </p>
 
 ## See the puzzle in action here: https://www.youtube.com/watch?v=GgbMfM6V8d0
